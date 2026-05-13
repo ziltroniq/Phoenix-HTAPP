@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#0f0f1a">
-  <title>EXAMBREAKER HT – Élite Prep APK</title>
+  <title>EXAMBREAKER HT – Téléchargement APK</title>
   <meta name="description" content="Téléchargez EXAMBREAKER HT, l'application ultime pour réussir les examens 9AF et NS4 en Haïti. Missions, points, simulations et système VIP.">
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -17,28 +16,8 @@
       transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
-    /* Light / Dark themes */
+    /* DARK ONLY – suppression du light theme */
     :root {
-      --bg-page: #f8fafc;
-      --surface: #ffffff;
-      --surface-2: #f1f5f9;
-      --text-primary: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --accent: #8b5cf6;
-      --accent-light: #a78bfa;
-      --accent-dark: #6d28d9;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 8px 15px -3px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="dark"] {
       --bg-page: #0a0b12;
       --surface: #121420;
       --surface-2: #1a1d2e;
@@ -49,6 +28,13 @@
       --accent: #8b5cf6;
       --accent-light: #a78bfa;
       --accent-dark: #7c3aed;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 15px -3px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     }
 
     body {
@@ -58,7 +44,6 @@
       line-height: 1.5;
     }
 
-    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
@@ -110,14 +95,14 @@
       cursor: pointer;
     }
     .star {
-      color: #cbd5e1;
+      color: #2d3748;
       transition: color 0.1s;
     }
     .star.active {
       color: #fbbf24;
     }
 
-    /* download counter animation */
+    /* download counter */
     .counter-number {
       font-size: 2rem;
       font-weight: 800;
@@ -151,15 +136,24 @@
       color: white;
     }
 
-    /* footer links */
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
+    /* image showcase (cardio) */
+    .app-preview {
+      background: var(--surface-2);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
     }
-    .footer-links a:hover { color: var(--accent); }
+    .app-preview img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
+    }
+    .app-preview img:hover {
+      transform: scale(1.02);
+    }
 
-    /* responsive */
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
       .btn { width: 100%; justify-content: center; }
@@ -167,309 +161,275 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- HEADER avec switcher thème + langue -->
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.5rem 0;">
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <img src="https://placehold.co/48x48/8b5cf6/white?text=EB" alt="Logo EXAMBREAKER" style="width: 48px; height: 48px; border-radius: 16px; background: var(--gradient); object-fit: cover;">
-        <div>
-          <h1 style="font-size: 1.6rem; font-weight: 800;">EXAMBREAKER HT</h1>
-          <p style="color: var(--text-muted); font-size: 0.8rem;">Préparation Élite – 9AF & NS4</p>
-        </div>
-      </div>
-      <div style="display: flex; gap: 1rem; align-items: center;">
-        <div class="lang-selector">
-          <button class="lang-btn active" data-lang="fr">FR</button>
-          <button class="lang-btn" data-lang="ht">Kreyòl</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <button id="themeToggle" style="background: var(--surface-2); border: 1px solid var(--border); border-radius: 2rem; padding: 0.5rem 1rem; cursor: pointer;">
-          <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
-        </button>
+<div class="container">
+  <!-- HEADER avec switcher langue et thème (dark only, suppression toggle) -->
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.5rem 0;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <!-- Logo (iconique, remplacé par placeholder mais on peut lier l'image) -->
+      <div style="width: 48px; height: 48px; border-radius: 16px; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem;">EB</div>
+      <div>
+        <h1 style="font-size: 1.6rem; font-weight: 800;">EXAMBREAKER HT</h1>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">Préparation Élite – 9AF & NS4</p>
       </div>
     </div>
-
-    <!-- Hero + QR + Download -->
-    <div class="card" style="margin-bottom: 2rem; text-align: center;">
-      <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 2.2rem; font-weight: 800;" id="heroTitle">🔥 Révolutionnez votre préparation</h2>
-        <p style="margin: 1rem 0; color: var(--text-secondary);" id="heroDesc">Gagnez des points, débloquez des examens, devenez VIP. Rejoignez +78k élèves haïtiens.</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0;">
-          <a href="#" class="btn" id="downloadBtn" style="text-decoration: none;">
-            <i class="fas fa-download"></i> <span id="downloadText">TÉLÉCHARGER APK</span>
-          </a>
-          <div style="text-align: center;">
-            <div class="stars" id="ratingStars">
-              <i class="fas fa-star star active"></i>
-              <i class="fas fa-star star active"></i>
-              <i class="fas fa-star star active"></i>
-              <i class="fas fa-star star active"></i>
-              <i class="fas fa-star star"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">4.0 / 5 (12 458 avis)</p>
-          </div>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-          <div class="card" style="padding: 0.8rem 1.5rem; background: var(--surface-2);">
-            <i class="fas fa-database"></i> <span class="counter-number" id="downloadCounter">78 421</span> <span id="downloadLabel">téléchargements</span>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="height: 48px;">
-            <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="App Store" style="height: 48px;">
-          </div>
-        </div>
-        <div style="margin-top: 1.5rem;">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://exambreaker-ht.vercel.app" alt="QR Code" style="width: 100px; background: white; padding: 8px; border-radius: 16px;">
-          <p style="font-size: 0.7rem; margin-top: 0.5rem;">Scannez pour télécharger</p>
-        </div>
-      </div>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ht">Kreyòl</button>
+      <button class="lang-btn" data-lang="en">EN</button>
     </div>
-
-    <!-- Features Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-      <div class="card"><i class="fas fa-tasks" style="font-size: 2rem; color: var(--accent);"></i><h3 style="margin: 1rem 0 0.5rem;">Missions quotidiennes</h3><p>Gagnez des points, débloquez des examens officiels 2026.</p></div>
-      <div class="card"><i class="fas fa-crown" style="font-size: 2rem; color: #fbbf24;"></i><h3 style="margin: 1rem 0 0.5rem;">Système VIP</h3><p>Accès anticipé 3 jours avant les dates officielles.</p></div>
-      <div class="card"><i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent);"></i><h3 style="margin: 1rem 0 0.5rem;">Simulations & examens</h3><p>9AF, NS4, plus de 19 matières complètes.</p></div>
-      <div class="card"><i class="fas fa-link" style="font-size: 2rem; color: var(--accent);"></i><h3 style="margin: 1rem 0 0.5rem;">Parrainage & rewards</h3><p>Invitez des amis, gagnez 10 points par filleul.</p></div>
-    </div>
-
-    <!-- Conditions d'utilisation + footnote -->
-    <div class="card" style="margin: 1.5rem 0;">
-      <details>
-        <summary style="font-weight: 700; cursor: pointer;"><i class="fas fa-file-contract"></i> <span id="termsTitle">Conditions d'utilisation</span></summary>
-        <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);" id="termsContent">
-          <p>En téléchargeant EXAMBREAKER HT, vous acceptez que l'application est un outil éducatif de simulation. Aucune garantie de fuite d'examens officiels n'est donnée. Les points sont obtenus via des actions loyales (missions, partages). Les données personnelles ne sont pas revendues. VIP est accessible via points accumulés. L'utilisation frauduleuse entraîne la suspension du compte. Mentions légales : contact@exambreaker.ht (fictif).</p>
-          <p style="margin-top: 0.5rem;">Dernière mise à jour : mai 2026 – Tous droits réservés, J.P Phoenix Corp.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- Footer / blogspot -->
-    <footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem;">
-      <div class="footer-links">
-        <a href="#">À propos</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" id="privacyLink">Confidentialité</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="https://phoenix-ht-app.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
-      </div>
-      <div style="font-size: 0.8rem; color: var(--text-muted);">
-        <i class="fas fa-shield-alt"></i> <span id="copyright">© 2026 EXAMBREAKER HT – Tous droits réservés</span>
-      </div>
-    </footer>
   </div>
 
-  <script>
-    // === Traductions dynamiques (FR, HT, EN) ===
-    const translations = {
-      fr: {
-        heroTitle: "🔥 Révolutionnez votre préparation",
-        heroDesc: "Gagnez des points, débloquez des examens, devenez VIP. Rejoignez +78k élèves haïtiens.",
-        downloadText: "TÉLÉCHARGER APK",
-        downloadLabel: "téléchargements",
-        termsTitle: "Conditions d'utilisation",
-        privacy: "Confidentialité",
-        copyright: "© 2026 EXAMBREAKER HT – Tous droits réservés",
-        statsTitle: "78 421 élèves l'utilisent déjà",
-        feature1: "Missions quotidiennes",
-        feature1Desc: "Gagnez des points, débloquez des examens officiels 2026.",
-        feature2: "Système VIP",
-        feature2Desc: "Accès anticipé 3 jours avant les dates officielles.",
-        feature3: "Simulations & examens",
-        feature3Desc: "9AF, NS4, plus de 19 matières complètes.",
-        feature4: "Parrainage & rewards",
-        feature4Desc: "Invitez des amis, gagnez 10 points par filleul."
-      },
-      ht: {
-        heroTitle: "🔥 Revolisyonè preparasyon w",
-        heroDesc: "Ranpòte pwen, debloke egzamen, vin VIP. Rejwenn +78k elèv ayisyen.",
-        downloadText: "TELECHAJÈ APK",
-        downloadLabel: "telechajman",
-        termsTitle: "Kondisyon itilizasyon",
-        privacy: "Konfidansyalite",
-        copyright: "© 2026 EXAMBREAKER HT – Tout dwa rezève",
-        statsTitle: "78 421 elèv deja itilize li",
-        feature1: "Misyon chak jou",
-        feature1Desc: "Ranpòte pwen, debloke egzamen ofisyèl 2026.",
-        feature2: "Sistèm VIP",
-        feature2Desc: "Aksè 3 jou anvan dat ofisyèl yo.",
-        feature3: "Similasyon & egzamen",
-        feature3Desc: "9AF, NS4, plis pase 19 matyè konplè.",
-        feature4: "Patronaj & rekonpans",
-        feature4Desc: "Envite zanmi, genyen 10 pwen pou chak filleul."
-      },
-      en: {
-        heroTitle: "🔥 Revolutionize your preparation",
-        heroDesc: "Earn points, unlock exams, become VIP. Join +78k Haitian students.",
-        downloadText: "DOWNLOAD APK",
-        downloadLabel: "downloads",
-        termsTitle: "Terms of use",
-        privacy: "Privacy",
-        copyright: "© 2026 EXAMBREAKER HT – All rights reserved",
-        statsTitle: "78,421 students already use it",
-        feature1: "Daily missions",
-        feature1Desc: "Earn points, unlock official 2026 exams.",
-        feature2: "VIP system",
-        feature2Desc: "Early access 3 days before official dates.",
-        feature3: "Simulations & exams",
-        feature3Desc: "9AF, NS4, over 19 complete subjects.",
-        feature4: "Referral & rewards",
-        feature4Desc: "Invite friends, get 10 points per referral."
-      }
-    };
+  <!-- Hero with app image preview (remplace QR code & stores) -->
+  <div class="card" style="margin-bottom: 2rem; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: 2.2rem; font-weight: 800;" id="heroTitle">🔥 Révolutionnez votre préparation</h2>
+      <p style="margin: 1rem 0; color: var(--text-secondary);" id="heroDesc">Gagnez des points, débloquez des examens, devenez VIP. Rejoignez +78k élèves haïtiens.</p>
+      
+      <!-- Espace "cardio" pour l'image de l'application (lien ImgBB ou autre) -->
+      <div class="app-preview" style="margin: 1.5rem auto; max-width: 320px;">
+        <img src="https://i.ibb.co/placeholder/eb-app-preview.png" alt="Aperçu de l'application EXAMBREAKER HT" id="appPreviewImage" style="width: 100%;">
+        <p style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--text-muted);">Capture d’écran • Interface élite</p>
+      </div>
 
-    let currentLang = 'fr';
-    let currentTheme = 'light';
-    let downloadCount = 78421;
-    const ratingStars = document.querySelectorAll('#ratingStars .star');
-    let currentRating = 4; // 4.0 stars
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0;">
+        <a href="#" class="btn" id="downloadBtn" style="text-decoration: none;">
+          <i class="fas fa-download"></i> <span id="downloadText">TÉLÉCHARGER APK</span>
+        </a>
+        <div style="text-align: center;">
+          <div class="stars" id="ratingStars">
+            <i class="fas fa-star star active"></i>
+            <i class="fas fa-star star active"></i>
+            <i class="fas fa-star star active"></i>
+            <i class="fas fa-star star active"></i>
+            <i class="fas fa-star star"></i>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">4.0 / 5 (12 458 avis)</p>
+        </div>
+      </div>
 
-    // Fonction pour mettre à jour l'UI de langue
-    function updateLanguage(lang) {
-      currentLang = lang;
-      const t = translations[lang];
-      document.getElementById('heroTitle').innerText = t.heroTitle;
-      document.getElementById('heroDesc').innerText = t.heroDesc;
-      document.getElementById('downloadText').innerText = t.downloadText;
-      document.getElementById('downloadLabel').innerText = t.downloadLabel;
-      document.getElementById('termsTitle').innerText = t.termsTitle;
-      document.querySelector('#privacyLink').innerText = t.privacy;
-      document.getElementById('copyright').innerHTML = t.copyright;
-      // Optionnel: update features card titles/desc (on peut faire rapide)
-      const cards = document.querySelectorAll('.card');
-      if (cards[2]) cards[2].querySelector('h3').innerText = t.feature1;
-      if (cards[3]) cards[3].querySelector('h3').innerText = t.feature2;
-      if (cards[4]) cards[4].querySelector('h3').innerText = t.feature3;
-      if (cards[5]) cards[5].querySelector('h3').innerText = t.feature4;
-      // descriptions
-      if (cards[2]) cards[2].querySelector('p').innerText = t.feature1Desc;
-      if (cards[3]) cards[3].querySelector('p').innerText = t.feature2Desc;
-      if (cards[4]) cards[4].querySelector('p').innerText = t.feature3Desc;
-      if (cards[5]) cards[5].querySelector('p').innerText = t.feature4Desc;
+      <div class="card" style="padding: 0.8rem 1.5rem; background: var(--surface-2); display: inline-flex; gap: 0.5rem; align-items: center;">
+        <i class="fas fa-database"></i> <span class="counter-number" id="downloadCounter">78 421</span> <span id="downloadLabel">téléchargements</span>
+      </div>
+    </div>
+  </div>
 
-      // set active class on language buttons
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-      });
-    }
+  <!-- Features Grid -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+    <div class="card"><i class="fas fa-tasks" style="font-size: 2rem; color: var(--accent);"></i><h3 id="feat1Title">Missions quotidiennes</h3><p id="feat1Desc">Gagnez des points, débloquez des examens officiels 2026.</p></div>
+    <div class="card"><i class="fas fa-crown" style="font-size: 2rem; color: #fbbf24;"></i><h3 id="feat2Title">Système VIP</h3><p id="feat2Desc">Accès anticipé 3 jours avant les dates officielles.</p></div>
+    <div class="card"><i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent);"></i><h3 id="feat3Title">Simulations & examens</h3><p id="feat3Desc">9AF, NS4, plus de 19 matières complètes.</p></div>
+    <div class="card"><i class="fas fa-link" style="font-size: 2rem; color: var(--accent);"></i><h3 id="feat4Title">Parrainage & rewards</h3><p id="feat4Desc">Invitez des amis, gagnez 10 points par filleul.</p></div>
+  </div>
 
-    // Simulation rating (cliquer étoiles)
-    function initRating() {
-      ratingStars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-          currentRating = index + 1;
-          updateStars(currentRating);
-          // Simulateur de notation (popup virtuel)
-          alert(`⭐ Vous avez noté l'application ${currentRating}.0 / 5 étoiles ! Merci.`);
-          // on peut aussi stocker dans localStorage
-          localStorage.setItem('userRating', currentRating);
-        });
-        star.addEventListener('mouseover', () => highlightStars(index));
-        star.addEventListener('mouseout', () => highlightStars(currentRating - 1));
-      });
-    }
-    function updateStars(rating) {
-      ratingStars.forEach((star, i) => {
-        if (i < rating) star.classList.add('active');
-        else star.classList.remove('active');
-      });
-    }
-    function highlightStars(index) {
-      ratingStars.forEach((star, i) => {
-        if (i <= index) star.classList.add('active');
-        else star.classList.remove('active');
-      });
-    }
+  <!-- Conditions d'utilisation -->
+  <div class="card" style="margin: 1.5rem 0;">
+    <details>
+      <summary style="font-weight: 700; cursor: pointer;"><i class="fas fa-file-contract"></i> <span id="termsTitle">Conditions d'utilisation</span></summary>
+      <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);" id="termsContent">
+        <p>En téléchargeant EXAMBREAKER HT, vous acceptez que l'application est un outil éducatif de simulation. Aucune garantie de fuite d'examens officiels n'est donnée. Les points sont obtenus via des actions loyales (missions, partages). Les données personnelles ne sont pas revendues. VIP est accessible via points accumulés. L'utilisation frauduleuse entraîne la suspension du compte. Mentions légales : contact@exambreaker.ht (fictif).</p>
+        <p style="margin-top: 0.5rem;">Dernière mise à jour : mai 2026 – Tous droits réservés, J.P Phoenix Corp.</p>
+      </div>
+    </details>
+  </div>
 
-    // Compteur de téléchargements animé + incrémentation
-    function updateCounterDisplay(value) {
-      const counterSpan = document.getElementById('downloadCounter');
-      counterSpan.innerText = value.toLocaleString();
-    }
-    function simulateDownload() {
-      downloadCount += 1;
-      updateCounterDisplay(downloadCount);
-      // sauvegarde fictive
-      localStorage.setItem('fakeDownloads', downloadCount);
-      // effet confetti simple
-      if (typeof window.confetti === 'function') {
-        window.confetti({ particleCount: 100, spread: 70 });
-      } else {
-        console.log('confetti not loaded');
-      }
-      alert("📱 Téléchargement lancé ! L'APK sera bientôt disponible (simulation)");
-    }
+  <!-- Footer / lien blog -->
+  <footer style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem;">
+    <div class="footer-links">
+      <a href="#" id="privacyLink">Confidentialité</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="https://phoenix-ht-app.blogspot.com" target="_blank" rel="noopener">Blog officiel</a>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-muted);">
+      <i class="fas fa-shield-alt"></i> <span id="copyright">© 2026 EXAMBREAKER HT – Tous droits réservés</span>
+    </div>
+  </footer>
+</div>
 
-    // Theme toggle (dark/light)
-    function setTheme(theme) {
-      currentTheme = theme;
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('ebTheme', theme);
-      const themeToggleBtn = document.getElementById('themeToggle');
-      const themeSpan = document.getElementById('themeText');
-      if (theme === 'dark') {
-        themeSpan.innerText = 'Light';
-        themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>';
-      } else {
-        themeSpan.innerText = 'Dark';
-        themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>';
-      }
+<script>
+  // ======================= TRADUCTIONS (FR, KREYÒL, EN) =======================
+  const translations = {
+    fr: {
+      heroTitle: "🔥 Révolutionnez votre préparation",
+      heroDesc: "Gagnez des points, débloquez des examens, devenez VIP. Rejoignez +78k élèves haïtiens.",
+      downloadText: "TÉLÉCHARGER APK",
+      downloadLabel: "téléchargements",
+      termsTitle: "Conditions d'utilisation",
+      privacy: "Confidentialité",
+      copyright: "© 2026 EXAMBREAKER HT – Tous droits réservés",
+      feat1Title: "Missions quotidiennes",
+      feat1Desc: "Gagnez des points, débloquez des examens officiels 2026.",
+      feat2Title: "Système VIP",
+      feat2Desc: "Accès anticipé 3 jours avant les dates officielles.",
+      feat3Title: "Simulations & examens",
+      feat3Desc: "9AF, NS4, plus de 19 matières complètes.",
+      feat4Title: "Parrainage & rewards",
+      feat4Desc: "Invitez des amis, gagnez 10 points par filleul."
+    },
+    ht: {
+      heroTitle: "🔥 Revolisyonè preparasyon w",
+      heroDesc: "Ranpòte pwen, debloke egzamen, vin VIP. Rejwenn +78k elèv ayisyen.",
+      downloadText: "TELECHAJÈ APK",
+      downloadLabel: "telechajman",
+      termsTitle: "Kondisyon itilizasyon",
+      privacy: "Konfidansyalite",
+      copyright: "© 2026 EXAMBREAKER HT – Tout dwa rezève",
+      feat1Title: "Misyon chak jou",
+      feat1Desc: "Ranpòte pwen, debloke egzamen ofisyèl 2026.",
+      feat2Title: "Sistèm VIP",
+      feat2Desc: "Aksè 3 jou anvan dat ofisyèl yo.",
+      feat3Title: "Similasyon & egzamen",
+      feat3Desc: "9AF, NS4, plis pase 19 matyè konplè.",
+      feat4Title: "Patronaj & rekonpans",
+      feat4Desc: "Envite zanmi, genyen 10 pwen pou chak filleul."
+    },
+    en: {
+      heroTitle: "🔥 Revolutionize your preparation",
+      heroDesc: "Earn points, unlock exams, become VIP. Join +78k Haitian students.",
+      downloadText: "DOWNLOAD APK",
+      downloadLabel: "downloads",
+      termsTitle: "Terms of use",
+      privacy: "Privacy",
+      copyright: "© 2026 EXAMBREAKER HT – All rights reserved",
+      feat1Title: "Daily missions",
+      feat1Desc: "Earn points, unlock official 2026 exams.",
+      feat2Title: "VIP system",
+      feat2Desc: "Early access 3 days before official dates.",
+      feat3Title: "Simulations & exams",
+      feat3Desc: "9AF, NS4, over 19 complete subjects.",
+      feat4Title: "Referral & rewards",
+      feat4Desc: "Invite friends, get 10 points per referral."
     }
+  };
 
-    // Charger les préférences
-    function loadStoredPrefs() {
-      const savedLang = localStorage.getItem('ebLang');
-      if (savedLang && translations[savedLang]) updateLanguage(savedLang);
-      const savedTheme = localStorage.getItem('ebTheme');
-      if (savedTheme) setTheme(savedTheme);
-      const savedDownloads = localStorage.getItem('fakeDownloads');
-      if (savedDownloads) downloadCount = parseInt(savedDownloads);
-      updateCounterDisplay(downloadCount);
-      const savedRating = localStorage.getItem('userRating');
-      if (savedRating) {
-        currentRating = parseInt(savedRating);
-        updateStars(currentRating);
-      }
-    }
+  let currentLang = 'fr';
+  let downloadCount = 78421;
+  let currentRating = 4;
+  const ratingStars = document.querySelectorAll('#ratingStars .star');
 
-    // Event listeners
+  // Mise à jour langue UI
+  function updateLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    document.getElementById('heroTitle').innerText = t.heroTitle;
+    document.getElementById('heroDesc').innerText = t.heroDesc;
+    document.getElementById('downloadText').innerText = t.downloadText;
+    document.getElementById('downloadLabel').innerText = t.downloadLabel;
+    document.getElementById('termsTitle').innerText = t.termsTitle;
+    document.getElementById('privacyLink').innerText = t.privacy;
+    document.getElementById('copyright').innerHTML = t.copyright;
+    document.getElementById('feat1Title').innerText = t.feat1Title;
+    document.getElementById('feat1Desc').innerText = t.feat1Desc;
+    document.getElementById('feat2Title').innerText = t.feat2Title;
+    document.getElementById('feat2Desc').innerText = t.feat2Desc;
+    document.getElementById('feat3Title').innerText = t.feat3Title;
+    document.getElementById('feat3Desc').innerText = t.feat3Desc;
+    document.getElementById('feat4Title').innerText = t.feat4Title;
+    document.getElementById('feat4Desc').innerText = t.feat4Desc;
+
+    // active language button
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const lang = btn.getAttribute('data-lang');
-        updateLanguage(lang);
-        localStorage.setItem('ebLang', lang);
-      });
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
     });
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      setTheme(newTheme);
-    });
-    const downloadBtn = document.getElementById('downloadBtn');
-    if (downloadBtn) {
-      downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        simulateDownload();
+  }
+
+  // Étoiles (simulateur rating)
+  function initRating() {
+    ratingStars.forEach((star, idx) => {
+      star.addEventListener('click', () => {
+        currentRating = idx + 1;
+        updateStars(currentRating);
+        alert(`⭐ Vous avez noté l'application ${currentRating}.0 / 5 ! Merci.`);
+        localStorage.setItem('userRating', currentRating);
       });
-    }
+      star.addEventListener('mouseover', () => highlightStars(idx));
+      star.addEventListener('mouseout', () => highlightStars(currentRating - 1));
+    });
+  }
+  function updateStars(rating) {
+    ratingStars.forEach((star, i) => {
+      if (i < rating) star.classList.add('active');
+      else star.classList.remove('active');
+    });
+  }
+  function highlightStars(index) {
+    ratingStars.forEach((star, i) => {
+      if (i <= index) star.classList.add('active');
+      else star.classList.remove('active');
+    });
+  }
 
-    // Insertion du logo de l'application (remplacer le placeholder)
-    // On utilise une image locale ou base64? J'utilise un fond stylé avec lettrage.
-    // On va remplacer l'img par un vrai logo personnalisé (on peut aussi utiliser data:image)
-    const logoImg = document.querySelector('img[alt="Logo EXAMBREAKER"]');
-    if (logoImg) {
-      logoImg.src = "https://placehold.co/48x48/8b5cf6/white?text=EBHT";
-      // On pourrait utiliser un vrai fichier, mais pour l'exemple c'est ok.
+  // Téléchargement
+  function updateCounterDisplay(value) {
+    document.getElementById('downloadCounter').innerText = value.toLocaleString();
+  }
+  function simulateDownload() {
+    downloadCount++;
+    updateCounterDisplay(downloadCount);
+    localStorage.setItem('fakeDownloads', downloadCount);
+    if (typeof window.confetti === 'function') {
+      window.confetti({ particleCount: 120, spread: 70 });
     }
+    alert("📥 Téléchargement lancé ! L'APK sera bientôt disponible (simulation)");
+  }
 
-    // Initialisation
-    loadStoredPrefs();
-    initRating();
-    // Petit effet pour confetti si besoin, on importe canvas-confetti en plus si manquant
-    if (typeof window.confetti !== 'function') {
-      const script = document.createElement('script');
-      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1";
-      script.onload = () => console.log("confetti ready");
-      document.head.appendChild(script);
+  // Charger préférences
+  function loadStoredPrefs() {
+    const savedLang = localStorage.getItem('ebLang');
+    if (savedLang && translations[savedLang]) updateLanguage(savedLang);
+    const savedDownloads = localStorage.getItem('fakeDownloads');
+    if (savedDownloads) downloadCount = parseInt(savedDownloads);
+    updateCounterDisplay(downloadCount);
+    const savedRating = localStorage.getItem('userRating');
+    if (savedRating) {
+      currentRating = parseInt(savedRating);
+      updateStars(currentRating);
     }
-  </script>
+  }
+
+  // Événements
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateLanguage(btn.getAttribute('data-lang'));
+      localStorage.setItem('ebLang', btn.getAttribute('data-lang'));
+    });
+  });
+
+  const downloadBtn = document.getElementById('downloadBtn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      simulateDownload();
+    });
+  }
+
+  // Image personnalisable: on permet de changer l'URL via un paramètre ou localStorage
+  // On peut définir une image par défaut, mais l'utilisateur pourra mettre son lien ImgBB.
+  // Pour être flexible, on lit une image depuis localStorage ou on garde placeholder.
+  const previewImg = document.getElementById('appPreviewImage');
+  const savedImageUrl = localStorage.getItem('ebAppImage');
+  if (savedImageUrl && savedImageUrl.trim() !== "") {
+    previewImg.src = savedImageUrl;
+  } else {
+    // Placeholder stylé avec un dégradé fictif (ou on laisse url par défaut)
+    previewImg.src = "https://i.ibb.co/4T0Y5bF/placeholder-app.png";
+    // Si l'utilisateur veut remplacer, on peut fournir un prompt ou une interface plus tard
+  }
+  
+  // Option: si on veut permettre à l'admin de changer l'image via console, mais c'est ok.
+  // On ajoute aussi un petit message pour guider l'utilisateur (pour remplacer)
+  console.log("Pour modifier l'image de l'application, exécutez dans la console : localStorage.setItem('ebAppImage', 'URL_IMG'); location.reload();");
+
+  // Initialisation
+  loadStoredPrefs();
+  initRating();
+
+  // inclusion de canvas-confetti si absent
+  if (typeof window.confetti !== 'function') {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1";
+    script.onload = () => console.log("confetti ready");
+    document.head.appendChild(script);
+  }
+</script>
 </body>
-  </html>
+</html>
